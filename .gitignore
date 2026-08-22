@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.bak
+.venv/
+venv/
+env/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs & temp
+*.log
+scratch/
+tmp/
+
+# Credentials (重要安全防護)
+credentials.json
+token.json
+token_drive_upload.json
+*.key
+*.pem
