@@ -61,9 +61,9 @@ python setup.py
 
 ---
 
-## 📦 內建常用 Skills 清單（全域安裝支援）
+## 📦 內建常用 Skills 清單（智慧偵測 AI Agent 目標路徑）
 
-執行 `python setup.py` 選擇 `[3]` 或直接執行 `python install_skills.py`，即可一鍵將以下專業技能安裝至 **Antigravity**、**Claude Code** 與 **Gemini CLI**：
+執行 `python setup.py` 選擇 `[3]` 或直接執行 `python install_skills.py`，系統會**自動智慧偵測當前運行的 AI Agent**（Antigravity / Claude Code / Gemini CLI），並自動鎖定最佳的全域路徑與專案路徑進行部署，無需手動選擇：
 
 | 類別 | 技能名稱 | 核心功能與說明 |
 | :--- | :--- | :--- |

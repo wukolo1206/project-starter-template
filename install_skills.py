@@ -95,14 +95,47 @@ SKILL_DEFINITIONS = {
     }
 }
 
-def get_target_dirs():
+def detect_ai_agent_and_targets():
+    """
+    智慧偵測當前運行的 AI Agent 或本機已配置的 AI 環境，
+    自動決定最佳的全域與專案安裝目標路徑。
+    """
     user_home = os.path.expanduser("~")
-    dirs = {
-        "Gemini CLI / Antigravity 全域": os.path.join(user_home, ".gemini", "config", "skills"),
-        "Claude Code 全域": os.path.join(user_home, ".claude", "skills"),
-        "當前專案工作區 (.agents/skills)": os.path.abspath(os.path.join(".agents", "skills"))
-    }
-    return dirs
+    gemini_path = os.path.join(user_home, ".gemini", "config", "skills")
+    claude_path = os.path.join(user_home, ".claude", "skills")
+    project_path = os.path.abspath(os.path.join(".agents", "skills"))
+
+    target_dirs = {}
+    detected_agents = []
+
+    # 1. 執行時期環境變數偵測 (Runtime Detection - 優先度最高)
+    is_antigravity = any(k.startswith("ANTIGRAVITY_") for k in os.environ)
+    is_claude = "CLAUDE_CODE" in os.environ or "CLAUDE_PROJECT_DIR" in os.environ
+    is_gemini = "GEMINI_CLI" in os.environ or "GEMINI_PROJECT_DIR" in os.environ
+
+    if is_antigravity:
+        detected_agents.append("🌐 Google Antigravity (當前運行中)")
+        target_dirs["Antigravity 全域技能目錄"] = gemini_path
+    elif is_claude:
+        detected_agents.append("🤖 Claude Code (當前運行中)")
+        target_dirs["Claude Code 全域技能目錄"] = claude_path
+    elif is_gemini:
+        detected_agents.append("✨ Gemini CLI (當前運行中)")
+        target_dirs["Gemini CLI 全域技能目錄"] = gemini_path
+
+    # 2. 若無特定執行環境變數（例如在獨立終端機執行），根據本機已安裝的 AI 目錄動態加入
+    if not detected_agents:
+        if os.path.exists(os.path.join(user_home, ".gemini")):
+            detected_agents.append("🌐 Antigravity / Gemini CLI (本機已安裝)")
+            target_dirs["Antigravity / Gemini CLI 全域"] = gemini_path
+        if os.path.exists(os.path.join(user_home, ".claude")):
+            detected_agents.append("🤖 Claude Code (本機已安裝)")
+            target_dirs["Claude Code 全域"] = claude_path
+
+    # 3. 預設始終包含當前專案工作區 (.agents/skills)
+    target_dirs["當前專案工作區 (.agents/skills)"] = project_path
+
+    return detected_agents, target_dirs
 
 def copy_skill(skill_name, src_base, target_dir):
     src_path = os.path.join(src_base, skill_name)
@@ -130,9 +163,16 @@ def run_installation(selected_skills):
     print(f"📦 開始安裝選定的 {len(selected_skills)} 個 Skills...")
     print("=" * 65)
 
-    target_dirs = get_target_dirs()
+    detected_agents, target_dirs = detect_ai_agent_and_targets()
 
-    print("即將安裝至以下目標位置：")
+    print("🔍 智慧 AI Agent 環境偵測：")
+    if detected_agents:
+        for ag in detected_agents:
+            print(f"  🎯 偵測到 AI Agent: {ag}")
+    else:
+        print("  🎯 偵測到通用終端環境 (自動配置專案與通用全域目錄)")
+
+    print("\n📂 自動判斷的最佳安裝目標路徑：")
     for label, path in target_dirs.items():
         print(f"  📁 [{label}] ➔ {path}")
     print("-" * 65)
