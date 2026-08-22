@@ -11,21 +11,23 @@
 
 ---
 
-## 🚀 新專案自動初始化規則
+## 🚀 新專案初始化互動選單規則 (Mandatory Initialization Menu)
 
-**觸發條件：** 工作目錄內沒有 `AGENTS.md`，且收到使用者第一則訊息時。
+**觸發條件：** 當收到「依範本初始化專案」、「載入 GitHub 範本」、提供本倉庫網址，或目錄內尚未存在 `AGENTS.md` 時。
 
-**動作流程：**
-1. 主動詢問：「這個資料夾還沒有 AGENTS.md，這是新專案嗎？要建立標準檔案嗎？」
-2. 使用者確認後，詢問：
-   - 專案名稱（預設為資料夾名稱）
-   - 類型（行政自動化 / GAS學習扶助 / GAS班級系統 / GAS教學工具 / GAS社群報告 / GAS錯題系統 / GAS生活工具 / 學科工具集 / 一般開發）
-3. 同時建立以下五個標準檔案：
-   - `CLAUDE.md`（含 YAML frontmatter + 技術框架 + 回答與資料來源規範 + 不能動的地方 + 部署後驗證清單）
-   - `AGENTS.md`（精簡版：讀 CLAUDE.md + handoff.md + 遵守全域規則）
-   - `CHANGELOG.md`（空白版本紀錄）
-   - `PITFALLS.md`（含 ⚠️ 已知風險 結構）
-   - `DECISIONS.md`（空白決策紀錄）
+**強制動作流程：**
+AI 助手（Antigravity / Claude Code / Gemini）**嚴禁直接擅自盲目建檔，必須先向使用者列出以下 4 大選項選單**（若環境支援互動卡片則調用問答工具供使用者點選）：
+
+> 📋 **請選擇您要執行的設定項目：**
+> 1. 🌟 **【全套一鍵大滿貫】（推薦）**：建立 5 大標準檔案 + 安裝 15 個全域 Skills + Google 試算表 OAuth 授權
+> 2. 📋 **【僅建立專案管理檔案】**：生成 `CLAUDE.md`, `AGENTS.md`, `CHANGELOG.md`, `PITFALLS.md`, `DECISIONS.md`, `handoff.md`
+> 3. 📦 **【僅安裝全域常用 Skills】**：智慧偵測當前 AI 工具，安裝 `using-superpowers`、Office (docx/xlsx/pdf)、視覺設計等技能
+> 4. 🔐 **【僅設定 Google 試算表與 OAuth】**：逐步引導取得 `credentials.json` 並生成 `token.json` 與 `config.json`
+>
+> 📌 **並請同時詢問專案名稱與類型**（行政自動化 / GAS學習扶助 / 教學工具 / 學科工具集 / 一般開發）。
+
+待使用者回覆選項編號（如「1」或「全套」）及專案類型後，才開始執行對應的建置作業。
+
 
 ---
 
