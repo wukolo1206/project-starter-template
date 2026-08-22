@@ -79,6 +79,8 @@ python setup.py
 | 🎒 **教學行政** | **`chinese-quiz-generator`** | 國語科標準考題產生器（南一/康軒/翰林 1~6 年級命題規範） |
 | 🎒 **教學行政** | **`teacher-meeting-organizer`** | 教師會議深度整理、方案 A 累加至 Google 試算表總表 |
 | 🎒 **教學行政** | **`teacher-meeting-auditor`** | 會議時程防呆審核（場地撞期、同日負擔、法定義務檢查） |
+| 🛠️ **AI 開發** | **`skill-creator`** | 讓 AI 自行建立、優化、評估與客製化新的專屬 Skill |
+| 🛠️ **AI 開發** | **`webapp-testing`** | 使用 Playwright 進行網頁前端自動化測試與截圖驗證 |
 
 ---
 

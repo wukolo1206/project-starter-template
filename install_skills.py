@@ -81,6 +81,17 @@ SKILL_DEFINITIONS = {
         "cat": "🎒 教學行政",
         "desc": "會議時程防呆審核（場地撞期、同日負擔、法定義務漏列檢查）",
         "tags": ["teaching_admin"]
+    },
+    # AI 代理人與開發工具類
+    "skill-creator": {
+        "cat": "🛠️ AI開發",
+        "desc": "讓 AI 自行建立、優化、評估與客製化新的專屬 Skill",
+        "tags": ["dev_tools", "office_design"]
+    },
+    "webapp-testing": {
+        "cat": "🛠️ AI開發",
+        "desc": "使用 Playwright 進行網頁前端自動化測試與截圖驗證",
+        "tags": ["dev_tools", "office_design"]
     }
 }
 
@@ -151,12 +162,13 @@ def main():
         print("📦 常用 Skills 安裝管理器 (Skill Pack Installer)")
         print("=" * 65)
         print("請選擇您要安裝的技能組合：\n")
-        print("  [1] 🌟 全套精選大滿貫（全部 13 個 Skills 一鍵全裝）")
-        print("      ➔ using-superpowers + Office 4件套 + 視覺設計 5件套 + 教學行政 3件套")
+        print("  [1] 🌟 全套精選大滿貫（全部 15 個 Skills 一鍵全裝）")
+        print("      ➔ using-superpowers + Office + 視覺設計 + 教學行政 + AI開發(skill-creator/webapp-testing)")
         print()
-        print("  [2] 📑 Office 辦公文件與視覺設計套裝包（共 9 個）")
+        print("  [2] 📑 Office 辦公文件、視覺設計與開發工具包（共 11 個）")
         print("      ➔ using-superpowers + docx + xlsx + pdf + pptx")
         print("      ➔ canvas-design + frontend-design + algorithmic-art + theme-factory")
+        print("      ➔ skill-creator + webapp-testing")
         print()
         print("  [3] 🎒 教師教學出題與學校行政包（共 6 個）")
         print("      ➔ using-superpowers + 國語出題 + 會議整理 + 防呆審核 + docx + pdf")
