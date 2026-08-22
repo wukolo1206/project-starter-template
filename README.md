@@ -15,36 +15,44 @@ Antigravity 會自動讀取規範、詢問專案名稱與類型，1 秒鐘為您
 
 ---
 
-### 方式 B（標準 GitHub 範本法：Use this template）
+### 方式 B（執行一鍵智慧設定總選單：setup.py）🌟 最推薦！
+在專案根目錄下執行：
+```bash
+python setup.py
+```
+系統會自動跳出互動選單，讓您自由選擇：
+```text
+  [1] 📋 專案標準環境初始化（自動生成 5 大標準管理文件）
+  [2] 🔐 設定 Google 試算表與 OAuth 授權（引導生成 token.json）
+  [3] 🌟 全套完整設定（[1] + [2] 一次依序完成）
+  [4] 📖 開啟說明文件手冊
+  [0] 🚪 離開
+```
+
+---
+
+### 方式 C（標準 GitHub 範本法：Use this template）
 1. 點擊本頁右上角綠色的 **「Use this template」➔「Create a new repository」**。
 2. 輸入您的新專案名稱並建立倉庫。
 3. Clone 至本機並以 **Antigravity** 開啟資料夾即可直接開工！
 
 ---
 
-### 方式 C（本機離線一鍵初始化腳本）
-在終端機切換至任何新專案資料夾，執行：
-```bash
-python init_project.py
-```
-依照畫面提示輸入專案名稱與類型，即可自動生成全部檔案。
-
----
-
-## 📁 專案標準 5 大文件結構
+## 📁 專案標準文件結構
 
 ```text
 專案根目錄/
 ├── .agents/                 # Antigravity 專屬工作區技能與客製化配置
+├── setup.py                 # 🌟 智慧設定總入口選單（可選擇初始化或 Google 授權）
+├── init_project.py          # 📋 專案 5 大標準管理檔案初始化腳本
+├── setup_google_auth.py     # 🔐 Google 憑證與授權一鍵引導精靈
+├── GOOGLE_AUTH_GUIDE.md     # 📖 Google OAuth 圖文逐步設定指南
 ├── AGENTS.md                # 全域 AI 規範（現況檔優先、自動備份、來源追溯）
 ├── CLAUDE.md                # 專案憲法（YAML 元資料、技術架構、不能動的地方、驗收清單）
 ├── CHANGELOG.md             # 版本歷程記錄
 ├── PITFALLS.md              # 避坑指南（已知風險與踩坑解法庫）
 ├── DECISIONS.md             # 重大架構決策紀錄
 ├── handoff.md               # Session 結束工作交接紀錄
-├── setup_google_auth.py     # 🔐 Google 憑證與授權一鍵引導精靈
-├── GOOGLE_AUTH_GUIDE.md     # 📖 Google OAuth 圖文逐步設定指南
-├── init_project.py          # 本機一鍵快速初始化腳本
 └── .gitignore               # 預設忽略暫存與憑證檔案
 ```
 
@@ -56,6 +64,8 @@ python init_project.py
 
 1. **直接執行一鍵引導精靈**：
    ```bash
+   python setup.py          # 選擇 [2] 或 [3]
+   # 或直接執行：
    python setup_google_auth.py
    ```
    系統會自動開啟瀏覽器頁面，引導您建立專案、啟用 API、下載 `credentials.json` 並自動生成 `token.json` 與 `config.json`！
@@ -74,3 +84,4 @@ python init_project.py
 
 ---
 授權：MIT License | 歡迎各校教師自由 Fork 與複製使用！
+
