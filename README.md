@@ -35,16 +35,31 @@ python init_project.py
 
 ```text
 專案根目錄/
-├── .agents/              # Antigravity 專屬工作區技能與客製化配置
-├── AGENTS.md             # 全域 AI 規範（現況檔優先、自動備份、來源追溯）
-├── CLAUDE.md             # 專案憲法（YAML 元資料、技術架構、不能動的地方、驗收清單）
-├── CHANGELOG.md          # 版本歷程記錄
-├── PITFALLS.md           # 避坑指南（已知風險與踩坑解法庫）
-├── DECISIONS.md          # 重大架構決策紀錄
-├── handoff.md            # Session 結束工作交接紀錄
-├── init_project.py       # 本機一鍵快速初始化腳本
-└── .gitignore            # 預設忽略暫存與憑證檔案
+├── .agents/                 # Antigravity 專屬工作區技能與客製化配置
+├── AGENTS.md                # 全域 AI 規範（現況檔優先、自動備份、來源追溯）
+├── CLAUDE.md                # 專案憲法（YAML 元資料、技術架構、不能動的地方、驗收清單）
+├── CHANGELOG.md             # 版本歷程記錄
+├── PITFALLS.md              # 避坑指南（已知風險與踩坑解法庫）
+├── DECISIONS.md             # 重大架構決策紀錄
+├── handoff.md               # Session 結束工作交接紀錄
+├── setup_google_auth.py     # 🔐 Google 憑證與授權一鍵引導精靈
+├── GOOGLE_AUTH_GUIDE.md     # 📖 Google OAuth 圖文逐步設定指南
+├── init_project.py          # 本機一鍵快速初始化腳本
+└── .gitignore               # 預設忽略暫存與憑證檔案
 ```
+
+---
+
+## 🔐 Google API 憑證與試算表快速設定
+
+如果您的專案需要連線 Google 試算表（Google Sheets）或 Google 雲端硬碟：
+
+1. **直接執行一鍵引導精靈**：
+   ```bash
+   python setup_google_auth.py
+   ```
+   系統會自動開啟瀏覽器頁面，引導您建立專案、啟用 API、下載 `credentials.json` 並自動生成 `token.json` 與 `config.json`！
+2. 亦可參考完整的逐步圖文指南：[👉 GOOGLE_AUTH_GUIDE.md](GOOGLE_AUTH_GUIDE.md)
 
 ---
 
